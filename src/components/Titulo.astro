@@ -1,0 +1,39 @@
+---
+export interface Props {
+    titulo: string;
+    color?: string;
+}
+
+const items = ["Item 1", "Item 2", "Item 3", "Item 4"];
+const { titulo, color = "rgb(27, 215, 52)" } = Astro.props;
+const estilo = "estilo_lista_items";
+---
+
+<h1 style={`color:${color}`}>{titulo}</h1>
+
+<ul>
+    {items.map((item) => <li class={estilo}>{item}</li>)}
+</ul>
+
+<ul>
+    {
+        items.map((item) => (
+            <>
+                <li class={estilo}>{item}</li>
+            </>
+        ))
+    }
+</ul>
+
+<style>
+    h1 {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .estilo_lista_items {
+        color: orange;
+        list-style-type: circle;
+        font-weight: bold;
+    }
+</style>
